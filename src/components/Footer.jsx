@@ -5,8 +5,7 @@ export default function Footer() {
     <footer className="border-t border-line py-10">
       <div className="container-page flex flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-sm text-muted">
-          © {new Date().getFullYear()} {site.name}. Built with React, Vite &
-          Tailwind CSS.
+          © {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
         <a
           href="#top"

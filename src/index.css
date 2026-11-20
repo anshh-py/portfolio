@@ -56,4 +56,106 @@
   .serif-display {
     @apply font-serif text-4xl leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-6xl;
   }
+
+  /* Playable snake game -----------------------------------------------
+   * The canvas covers the viewport ABOVE section backgrounds but below the
+   * navbar; the HUD sits just under the navigation bar. pointer-events:
+   * none keeps every real click and navigation working.
+   */
+  .snake-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    image-rendering: pixelated;
+  }
+
+  .snake-hud {
+    position: fixed;
+    top: 5rem;
+    right: 1.25rem;
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid rgba(180, 85, 45, 0.28);
+    border-radius: 9999px;
+    background: rgba(250, 248, 245, 0.82);
+    backdrop-filter: blur(4px);
+    font-size: 12px;
+    font-weight: 600;
+    color: #1c1917;
+    box-shadow: 0 2px 10px rgba(28, 25, 23, 0.08);
+  }
+
+  .snake-hud-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #3ca55c;
+  }
+
+  /* Touch-only D-pad, centered at the bottom of the viewport. */
+  .snake-dpad {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    z-index: 40;
+    display: none;
+    width: 132px;
+    height: 132px;
+    filter: drop-shadow(0 4px 10px rgba(28, 25, 23, 0.15));
+  }
+
+  .snake-dpad-btn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #e6e0d8;
+    border-radius: 12px;
+    background: rgba(250, 248, 245, 0.9);
+    backdrop-filter: blur(4px);
+    font-size: 18px;
+    line-height: 1;
+    color: #1c1917;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .snake-dpad-up { top: 0; left: 44px; }
+  .snake-dpad-left { top: 44px; left: 0; }
+  .snake-dpad-right { top: 44px; right: 0; }
+  .snake-dpad-down { top: 88px; left: 44px; }
+
+  @media (pointer: coarse) {
+    .snake-dpad {
+      display: block;
+    }
+  }
+
+  /* Ask Ansh typing indicator */
+  .typing-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #b4552d;
+    animation: typingBounce 1.2s infinite ease-in-out;
+  }
+
+  .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
 }

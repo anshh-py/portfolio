@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Check, Github, Linkedin, Mail } from "lucide-react";
 import { site } from "../data/site";
 
 const channels = [
@@ -8,6 +9,7 @@ const channels = [
     value: site.email,
     href: `mailto:${site.email}`,
     icon: Mail,
+    copy: true,
   },
   {
     label: "LinkedIn",
@@ -24,6 +26,18 @@ const channels = [
 ];
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(site.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
+
   return (
     <section id="contact" className="border-t border-line py-24 sm:py-32">
       <div className="container-page">
@@ -44,22 +58,43 @@ export default function Contact() {
             </p>
 
             <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
-              {channels.map(({ label, value, href, icon: Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  className="group inline-flex items-center justify-center gap-3 rounded-full border border-paper/15 px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:border-accent hover:text-accent"
-                >
-                  <Icon className="h-5 w-5" />
-                  <span className="text-left">
-                    <span className="block text-xs text-paper/50">{label}</span>
-                    {value}
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 text-paper/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
-                </a>
-              ))}
+              {channels.map(({ label, value, href, icon: Icon, copy }) =>
+                copy ? (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={copyEmail}
+                    aria-label={`Copy ${label} address`}
+                    className="group inline-flex cursor-pointer items-center justify-center gap-3 rounded-full border border-paper/15 px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="text-left">
+                      <span className="block text-xs text-paper/50">{label}</span>
+                      {value}
+                    </span>
+                    {copied ? (
+                      <Check className="h-4 w-4 text-[#3ca55c]" />
+                    ) : (
+                      <ArrowUpRight className="h-4 w-4 text-paper/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                    )}
+                  </button>
+                ) : (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noreferrer" : undefined}
+                    className="group inline-flex items-center justify-center gap-3 rounded-full border border-paper/15 px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="text-left">
+                      <span className="block text-xs text-paper/50">{label}</span>
+                      {value}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 text-paper/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                  </a>
+                )
+              )}
             </div>
           </motion.div>
         </div>

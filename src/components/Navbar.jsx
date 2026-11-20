@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { navLinks } from "../data/site";
 
-export default function Navbar() {
+export default function Navbar({ gameMode = false, onToggleGameMode }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -49,7 +49,26 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={onToggleGameMode}
+            aria-pressed={gameMode}
+            title={gameMode ? "Disable Game Mode" : "Enable Game Mode"}
+            className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors sm:px-4 sm:py-2 sm:text-xs ${
+              gameMode
+                ? "border-[#3ca55c]/40 bg-[#3ca55c]/10 text-[#2e7d43]"
+                : "border-line text-muted hover:text-ink"
+            }`}
+          >
+            <span
+              className={`h-2 w-2 rounded-full transition-colors ${
+                gameMode ? "bg-[#3ca55c]" : "bg-[#d6d3d1]"
+              }`}
+            />
+            Game Mode: {gameMode ? "ON" : "OFF"}
+          </button>
+
           <span
             aria-disabled="true"
             title="Resume coming soon"

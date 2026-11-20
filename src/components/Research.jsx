@@ -47,18 +47,52 @@ export default function Research() {
               </span>
             </div>
 
-            <p className="mt-6 text-[0.95rem] leading-relaxed text-muted">
-              This research explores predicting fuel consumption across heavy-duty
-              vehicles and translating those predictions into actionable,
-              explainable guidance for drivers. The focus is on building an
-              agentic feedback loop — one that surfaces the <em>why</em> behind
-              recommendations, not just the numbers.
-            </p>
+            <div className="mt-6 space-y-5">
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-ink">Problem</h4>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">
+                  Heavy-duty vehicle fuel consumption varies with vehicle
+                  characteristics, operating conditions, driving behaviour, and
+                  route conditions. A prediction alone does not necessarily help
+                  a driver understand how to improve fuel efficiency.
+                </p>
+              </div>
 
-            <p className="mt-4 text-[0.95rem] leading-relaxed text-muted">
-              This is a work in progress. I'm actively shaping the problem
-              formulation, data strategy and evaluation approach, and I'll share
-              concrete findings as the work matures.
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-ink">Research direction</h4>
+                <ul className="mt-2 space-y-1.5 text-[0.95rem] leading-relaxed text-muted">
+                  <li>• Investigate fuel-rate prediction across different heavy-duty vehicle types.</li>
+                  <li>• Explore suitable data preparation and feature engineering strategies.</li>
+                  <li>• Study predictive modelling approaches.</li>
+                  <li>• Explore explainability techniques to communicate why predictions or recommendations are produced.</li>
+                  <li>• Investigate an agentic feedback mechanism that turns model outputs into understandable driver guidance.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-ink">Potential contribution</h4>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">
+                  A framework combining predictive modelling, explainability, and
+                  actionable driver feedback.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-ink">What I'm learning</h4>
+                <ul className="mt-2 space-y-1.5 text-[0.95rem] leading-relaxed text-muted">
+                  <li>• Research problem formulation, dataset evaluation and data quality assessment.</li>
+                  <li>• Cross-vehicle generalization and predictive model evaluation.</li>
+                  <li>• Explainable AI, and translating model outputs into practical recommendations.</li>
+                  <li>• Evaluating whether generated feedback is useful and trustworthy.</li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="mt-6 text-[0.95rem] leading-relaxed text-muted">
+              This is ongoing research — a work in progress, not a completed or
+              published system. I'm actively shaping the problem formulation, data
+              strategy and evaluation approach, and I'll share concrete findings as
+              the work matures.
             </p>
           </div>
         </motion.div>

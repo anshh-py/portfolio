@@ -5,8 +5,13 @@ import { Database, GitBranch, Layers, Server, Workflow } from "lucide-react";
 const points = [
   {
     icon: Layers,
-    title: "Full applications",
-    text: "I build complete AI applications — not isolated notebooks.",
+    title: "Problem-first",
+    text: "I understand the problem — users, data, constraints — before picking a model or stack.",
+  },
+  {
+    icon: Workflow,
+    title: "AI/ML & LLMs",
+    text: "Applied machine learning, RAG, tool calling and agents integrated into products.",
   },
   {
     icon: Server,
@@ -15,18 +20,13 @@ const points = [
   },
   {
     icon: Database,
-    title: "Databases",
-    text: "PostgreSQL and Supabase to keep context and state persistent.",
-  },
-  {
-    icon: Workflow,
-    title: "AI integration",
-    text: "LLMs, RAG and agentic workflows wired into real products.",
+    title: "Databases & state",
+    text: "PostgreSQL, Supabase and Redis for persistence and conversation context.",
   },
   {
     icon: GitBranch,
-    title: "Deployment",
-    text: "Shipping and iterating on live infrastructure.",
+    title: "Automation & deployment",
+    text: "Shipping, verifying and iterating on live infrastructure.",
   },
 ];
 
@@ -42,8 +42,8 @@ export default function About() {
         >
           <SectionHeader
             eyebrow="About"
-            title="Engineering that ships, not just experiments."
-            description="I'm an AI Engineer focused on turning models into dependable, useful software."
+            title="I build AI applications that solve real problems."
+            description="An AI Engineer focused on turning models and ideas into dependable, useful software."
           />
         </motion.div>
 
@@ -55,17 +55,17 @@ export default function About() {
           className="space-y-6"
         >
           <p className="text-lg leading-relaxed text-muted">
-            My interest lies in the whole journey: understanding the problem,
-            designing the architecture, training or integrating the model, and
-            then actually shipping it. I care about the engineering around the
-            model — the APIs, databases and deployment that make an idea useful
-            to real users.
+            I build practical AI applications that solve actual problems. I
+            start by understanding the problem — the users, the data, the
+            constraints — before choosing a model or technology. That usually
+            means pairing AI/ML and LLMs with solid engineering: backend
+            services, databases, automation, and deployment.
           </p>
           <p className="text-lg leading-relaxed text-muted">
-            Lately I've been focused on LLM engineering: retrieval-augmented
-            generation, embeddings, prompt engineering, tool calling and
-            agentic workflows. I enjoy building systems where an AI doesn't
-            just answer — it does something, with the right guards in place.
+            Most of what I've learned has come from building, debugging,
+            testing, and shipping complete systems. I care about the
+            engineering around the model — the APIs, persistence, reliability,
+            and how it actually runs for someone — not just the model itself.
           </p>
 
           <ul className="mt-10 divide-y divide-line border-y border-line">

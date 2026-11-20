@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Layers } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Github, Layers } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import { projects } from "../data/projects";
 
 function ProjectCard({ project, index }) {
+  const [detailsOpen, setDetailsOpen] = useState(false);
   return (
     <motion.article
       initial={{ opacity: 0, y: 32 }}
@@ -59,6 +61,41 @@ function ProjectCard({ project, index }) {
             {tech}
           </span>
         ))}
+      </div>
+
+      <div className="mt-6 space-y-4 border-t border-paper/10 pt-5">
+        <button
+          type="button"
+          onClick={() => setDetailsOpen((v) => !v)}
+          aria-expanded={detailsOpen}
+          className="group/btn inline-flex w-full items-center justify-between text-sm font-medium text-paper transition-colors hover:text-accent focus-visible:text-accent"
+        >
+          <span>Explore engineering detail</span>
+          <ChevronDown
+            className={`h-4 w-4 text-paper/50 transition-transform duration-300 ${
+              detailsOpen ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+
+        {detailsOpen && (
+          <dl className="space-y-4">
+            {[
+              { term: "Problem", body: project.problem },
+              { term: "What it does", body: project.implementation },
+              { term: "Key challenges", body: project.challenges },
+            ].map(({ term, body }) => (
+              <div key={term}>
+                <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-drift">
+                  {term}
+                </dt>
+                <dd className="mt-1 text-sm leading-relaxed text-paper/70">
+                  {body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </div>
 
       <div className="mt-7 flex items-center gap-3 border-t border-paper/10 pt-5">
